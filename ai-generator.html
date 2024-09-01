@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Image Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0056b3;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 30px;
+        }
+
+        .form-group label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"] {
+            padding: 12px;
+            width: 100%;
+            max-width: 600px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .form-group button {
+            padding: 12px 24px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        .form-group button:hover {
+            background-color: #218838;
+        }
+
+        .image-preview {
+            margin-top: 20px;
+        }
+
+        .image-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            background-color: #f1f1f1;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+            color: #666;
+            box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.1);
+        }
+        /* Style for the menu icon */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+        }
+
+        /* The sidebar menu */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f1f1f1;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1c40f;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Style for the main content */
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>AI Image Generator</h1>
+    </header>
+<!-- Menu Icon -->
+<div class="menu-icon" onclick="openNav()">&#9776;</div>
+
+<!-- Sidebar Menu -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="enhance.html">Enhance</a>
+    <a href="ai-generator.html">AI Image Generating</a>
+</div>
+    <main>
+        <div class="form-group">
+            <label for="prompt">Enter a Description for Image Generation:</label><br>
+            <input type="text" id="prompt" placeholder="e.g., A futuristic cityscape">
+            <button id="generate-button">Generate Image</button>
+        </div>
+        <div class="image-preview" id="image-preview">
+            <!-- Generated image will be shown here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Image Enhancer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const generateButton = document.getElementById('generate-button');
+        const imagePreview = document.getElementById('image-preview');
+        const promptInput = document.getElementById('prompt');
+
+        generateButton.addEventListener('click', generateImage);
+
+        async function generateImage() {
+            const prompt = promptInput.value;
+            if (!prompt) {
+                alert('Please enter a description.');
+                return;
+            }
+
+           /* Example API URL (replace with actual API endpoint) */
+           const apiUrl = https://api.example.com/generate-image?prompt=${encodeURIComponent(prompt)};
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) throw new Error('Network response was not ok.');
+                const data = await response.json();
+
+                // Display generated image
+                const img = new Image();
+                img.src = data.imageUrl; // Adjust according to API response
+                img.alt = 'Generated Image';
+                imagePreview.innerHTML = '';
+                imagePreview.appendChild(img);
+            } catch (error) {
+                console.error('Error generating image:', error);
+                alert('Failed to generate image. Please try again.');
+            }
+        
+    </script>
+</body>
+</html>
