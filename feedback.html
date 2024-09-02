@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Cut-Pro Feedback</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,44 +51,100 @@
         .feedback-container button:hover {
             background-color: #218838;
         }
+        /* Style for the menu icon */
+        .menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            z-index: 1;
+        }
+
+        /* The sidebar menu */
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #f1f1f1;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1c40f;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        /* Style for the main content */
+        #main {
+            transition: margin-left .5s;
+            padding: 16px;
+        }
     </style>
 </head>
 <body>
 
+<!-- Menu Icon -->
+<div class="menu-icon" onclick="openNav()">&#9776;</div>
+
+<!-- Sidebar Menu -->
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="index.html">Home</a>
+    <a href="enhance.html">Enhance</a>
+    <a href="ai-generator.html">AI Image Generating</a>
+    <a href="https://neehara2009.github.io/Cut-Pro/feedback.html">feedback</a>
+    <a href="donate.html">Donate for usu</a>
+</div>
+
     <div class="feedback-container">
         <h2>Send Us Your Feedback</h2>
-        <form id="contact-form">
+        <form action="https://formspree.io/f/mblrwnkk" method="POST">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" placeholder="Your name" required>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" placeholder="Your email" required>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
+            <label for="feedback">Feedback:</label>
+            <textarea id="feedback" name="message" placeholder="Your feedback" rows="5" required></textarea>
 
             <button type="submit">Submit Feedback</button>
         </form>
     </div>
+<script>
+/* Open the sidebar menu */
+function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
 
-    <!-- EmailJS Script -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("HRIYfcz0qarBpXbDA");
-        })();
-
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            emailjs.sendForm('service_wcd8xim', 'template_w0abi82', this)
-                .then(function() {
-                    alert('Feedback sent successfully!');
-                }, function(error) {
-                    alert('Failed to send feedback. Please try again later.');
-                });
-        });
-    </script>
-
+        /* Close the sidebar menu */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+</script>
 </body>
 </html>
