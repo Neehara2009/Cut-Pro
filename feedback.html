@@ -16,29 +16,6 @@
             height: 100vh;
         }
 
-        
-        h1 {
-            color: #333;
-            text-align: center;
-        }
-        .guidelines {
-            background-color: #fff;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        .guidelines h2 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        .guidelines p {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
         .feedback-container {
             background-color: white;
             padding: 20px;
@@ -74,6 +51,7 @@
         .feedback-container button:hover {
             background-color: #218838;
         }
+
         /* Style for the menu icon */
         .menu-icon {
             font-size: 30px;
@@ -124,6 +102,16 @@
             transition: margin-left .5s;
             padding: 16px;
         }
+
+        /* Style for the guidelines */
+        .guidelines {
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+        }
     </style>
 </head>
 <body>
@@ -134,17 +122,18 @@
 <!-- Sidebar Menu -->
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Home</a>
-    <a href="enhance.html">Enhance</a>
-    <a href="ai-generator.html">AI Image Generating</a>
-    <a href="https://neehara2009.github.io/Cut-Pro/feedback.html">feedback</a>
-    <a href="donate.html">Donate for us</a>
+    <a href="https://cutpro.neocities.org/">Home</a>
+    <a href="https://cutpro.neocities.org/enhance">Enhance</a>
+    <a href="https://cutpro.neocities.org/ai-generator">AI Image Generating</a>
+    <a href="https://neehara2009.github.io/Cut-Pro/feedback.html">Feedback</a>
+    <a href="https://cutpro.neocities.org/donate">Donate for us</a>
 </div>
 
-    <h1>Submit Your Feedback</h1>
+<div class="feedback-container">
+    <h2>Send Us Your Feedback</h2>
 
     <div class="guidelines">
-        <h2>Guidelines for Submitting Feedback:</h2>
+        <strong>Guidelines for Submitting Feedback:</strong>
         <p>1. Enter your name in the "Name" field.</p>
         <p>2. Enter your Gmail address in the "Email" field.</p>
         <p>3. Write your feedback in the "Feedback" field. Please provide as much detail as possible.</p>
@@ -153,33 +142,33 @@
         <p>6. Wait for a confirmation message to ensure your feedback has been submitted successfully.</p>
     </div>
 
-    <div class="feedback-container">
-        <h2>Send Us Your Feedback</h2>
-        <form action="https://formspree.io/f/mblrwnkk" method="POST">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+    <form action="https://formspree.io/f/mblrwnkk" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
 
-            <label for="feedback">Feedback:</label>
-            <textarea id="feedback" name="message" placeholder="Your feedback" rows="5" required></textarea>
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="message" placeholder="Your feedback" rows="5" required></textarea>
 
-            <button type="submit">Submit Feedback</button>
-        </form>
-    </div>
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
+
 <script>
-/* Open the sidebar menu */
-function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
+    /* Open the sidebar menu */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
 
-        /* Close the sidebar menu */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
+    /* Close the sidebar menu */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
 </script>
+
 </body>
 </html>
