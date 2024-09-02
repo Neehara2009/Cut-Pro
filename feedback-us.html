@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us</title>
+    <title>Cut-Pro Feedback</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -102,67 +102,73 @@
             transition: margin-left .5s;
             padding: 16px;
         }
+
+        /* Style for the guidelines */
+        .guidelines {
+            margin-bottom: 20px;
+            background-color: #e9ecef;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #495057;
+        }
     </style>
 </head>
 <body>
-    <!-- Menu Icon -->
+
+<!-- Menu Icon -->
 <div class="menu-icon" onclick="openNav()">&#9776;</div>
 
 <!-- Sidebar Menu -->
 <div id="mySidenav" class="sidenav">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-    <a href="index.html">Home</a>
-    <a href="enhance.html">Enhance</a>
-    <a href="ai-generator.html">AI Image Generating</a>
-    <a href="feedback.html">feedback</a>
+    <a href="https://cutpro.neocities.org/">Home</a>
+    <a href="https://cutpro.neocities.org/enhance">Enhance</a>
+    <a href="https://cutpro.neocities.org/ai-generator">AI Image Generating</a>
+    <a href="https://neehara2009.github.io/Cut-Pro/feedback.html">Feedback</a>
+    <a href="https://cutpro.neocities.org/donate">Donate for us</a>
 </div>
 
-    <div class="feedback-container">
-        <h2>Send Us Your Feedback</h2>
-        <form id="contact-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
+<div class="feedback-container">
+    <h2>Send Us Your Feedback</h2>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" placeholder="Your email" required>
-
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" placeholder="Your message" rows="5" required></textarea>
-
-            <button type="submit">Submit Feedback</button>
-        </form>
+    <div class="guidelines">
+        <strong>Guidelines for Submitting Feedback:</strong>
+        <p>1. Enter your name in the "Name" field.</p>
+        <p>2. Enter your Gmail address in the "Email" field.</p>
+        <p>3. Write your feedback in the "Feedback" field. Please provide as much detail as possible.</p>
+        <p>4. Click "Submit Feedback" to send your feedback to the Cut Pro team.</p>
+        <p>5. Complete the reCAPTCHA challenge to verify that you are not a robot.</p>
+        <p>6. Wait for a confirmation message to ensure your feedback has been submitted successfully.</p>
     </div>
 
-    <!-- EmailJS Script -->
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function(){
-            emailjs.init("HRIYfcz0qarBpXbDA");
-        })();
+    <form action="https://formspree.io/f/mblrwnkk" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" placeholder="Your name" required>
 
-        document.getElementById('contact-form').addEventListener('submit', function(event) {
-            event.preventDefault();
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Your email" required>
 
-            emailjs.sendForm('service_wcd8xim', 'template_w0abi82', this)
-                .then(function() {
-                    alert('Feedback sent successfully!');
-                }, function(error) {
-                    alert('Failed to send feedback. Please try again later.');
-                });
-        });
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="message" placeholder="Your feedback" rows="5" required></textarea>
 
-        /* Open the sidebar menu */
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
+        <button type="submit">Submit Feedback</button>
+    </form>
+</div>
 
-        /* Close the sidebar menu */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
-        }
-    </script>
+<script>
+    /* Open the sidebar menu */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    /* Close the sidebar menu */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
 
 </body>
 </html>
